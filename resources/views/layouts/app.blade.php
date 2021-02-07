@@ -8,7 +8,31 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-200">
+    <nav class="pg-6 bg-white flex justify-between mb-6">
+        <ul class="flex items-center">
+            <li>
+                <a href="" class="p-3">Home</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Fridges</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li>
+                <a href="" class="p-3">Kevin Dubois</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Login</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Register</a>
+            </li>
+            <li>
+                <a href="" class="p-3">Logout</a>
+            </li>
+        </ul>
+    </nav>
     @yield('content')
 </body>
 </html>

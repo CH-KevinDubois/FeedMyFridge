@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-red-100">Index</div> 
+    <div class="flex justify-center">
+        <div class="w-3/4 bg-white p-6 rounded-lg">
+
+        </div>
+    </div> 
 @endsection
