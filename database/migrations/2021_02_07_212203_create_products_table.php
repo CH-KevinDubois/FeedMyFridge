@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->timestamps();
             $table->date('expired_at');
             $table->integer('quantity');
-            $table->mediumText('name');
-            $table->mediumText('description');
+            $table->string('name');
+            $table->string('description');
         });
     }
 
