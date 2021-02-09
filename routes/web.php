@@ -23,9 +23,9 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
-Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::resource('/fridges', FridgesController::class);
+Route::resource('/fridges', FridgesController::class)->middleware('auth');
 
 Route::get('/home', function () {
     return view('home.homepage');

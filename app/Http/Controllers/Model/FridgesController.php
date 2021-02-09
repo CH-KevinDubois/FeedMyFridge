@@ -11,4 +11,9 @@ class FridgesController extends Controller
     {  
         return view('fridges.index');
     }
+
+    public function create()
+    {
+        return view('fridges.create');
+    }
 }

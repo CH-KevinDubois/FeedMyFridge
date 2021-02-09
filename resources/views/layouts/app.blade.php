@@ -16,7 +16,7 @@
             </li>
             @auth
             <li>
-                <a href="" class="p-3">Fridges</a>
+                <a href="{{ route('fridges.index') }}" class="p-3">Fridges</a>
             </li>  
             @endauth
         </ul>
@@ -26,7 +26,11 @@
                 <a href="" class="p-3">{{ auth()->user()->name }}</a>
             </li>
             <li>
-                <a href="{{ route('logout') }}" class="p-3">Logout</a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit"class="inline bg-red-500
+                    rounded-lg text-white p-2 hover:bg-red-700">Logout</button>
+                </form>
             </li>
             @endauth
             @guest
