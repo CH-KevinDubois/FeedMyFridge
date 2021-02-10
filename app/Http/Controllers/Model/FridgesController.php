@@ -16,4 +16,15 @@ class FridgesController extends Controller
     {
         return view('fridges.create');
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'brand' => 'required|max:255',
+            'freezer' => 'required',
+            'door' => 'required',
+        ]);
+
+        return redirect()->route('fridges.index');
+    }
 }
