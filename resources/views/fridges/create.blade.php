@@ -11,7 +11,14 @@
                         <label for="brand" class="sr-only">Brand</label>
                         <input type="text" name="brand" id="brand" placeholder="Fridge's brand" class="bg-gray-100 
                         border-2 w-full p-4 rounded-lg focus:outline-none focus:ring-2 
-                        focus:ring-blue-600 focus:border-transparent"></div>
+                        focus:ring-blue-600 focus:border-transparent @error('brand')
+                        ring-2 ring-red-500 border-transparent @enderror"></div>
+
+                    @error('brand')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
@@ -39,13 +46,13 @@
                     <div class="mt-2 flex flex-row space-x-6">
                         <div class="mr-2">
                             <label class="inline-flex items-center">
-                                <input type="radio" checked name="radio-direct" class="text-blue-500" value="left" />
+                                <input type="radio" checked name="side" class="text-blue-500" value="0" />
                                 <span class="ml-2">Left</span>
                             </label>
                         </div>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" name="door" class="text-blue-500" value="right" />
+                                <input type="radio" name="side" class="text-blue-500" value="1" />
                                 <span class="ml-2">Right</span>
                             </label>
                         </div>

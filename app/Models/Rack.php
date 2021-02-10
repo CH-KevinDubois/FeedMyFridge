@@ -5,14 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Fridge extends Model
+class Rack extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'brand',
-        'location',
-        'freezer',
-        'side',
-    ];
 }

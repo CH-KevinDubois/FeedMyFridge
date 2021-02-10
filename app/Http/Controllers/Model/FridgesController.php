@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Model;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fridge;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast;
 
 class FridgesController extends Controller
 {
     public function index()
     {  
-        return view('fridges.index');
+        return view('fridges.index', [
+            'fridges' => auth()->user()->fridges
+        ]);
     }
 
     public function create()
@@ -21,10 +25,19 @@ class FridgesController extends Controller
     {
         $this->validate($request, [
             'brand' => 'required|max:255',
-            'freezer' => 'required',
-            'door' => 'required',
+            'side' => 'required',
         ]);
 
-        return redirect()->route('fridges.index');
+
+        auth()->user()->fridges()->create([
+            'brand' => $request->brand,
+            'location' => $request->location,
+            'freezer' => $request->freezer==='on'?true:false,
+            'side' => $request->side,
+        ]);
+
+        //auth()->user()->fridges()->create($request->only('brand', 'location', 'freezer', 'side'));
+
+        return back();
     }
 }
