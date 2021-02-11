@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('fridge_id')->constrained()->onDelete('cascade');
             $table->date('expired_at');
             $table->integer('quantity');
             $table->string('name');

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Model\FridgesController;
+use App\Http\Controllers\model\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::resource('/fridges', FridgesController::class)->middleware('auth');
+
+Route::resource('fridges/products', ProductsController::class);
 
 Route::get('/home', function () {
     return view('home.homepage');
