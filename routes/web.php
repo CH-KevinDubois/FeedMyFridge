@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Model\FridgesController;
 use App\Http\Controllers\model\ProductsController;
 
@@ -30,6 +31,5 @@ Route::resource('/fridges', FridgesController::class)->middleware('auth');
 
 Route::resource('fridges/products', ProductsController::class);
 
-Route::get('/home', function () {
-    return view('home.homepage');
-})->name('home');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
