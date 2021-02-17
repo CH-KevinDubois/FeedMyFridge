@@ -24,7 +24,7 @@
 
                 <div class="mb-4">
                     <div class="flex flex-col items-start align-middle">
-                        <label class="mb-2" for="expiration_date">Expire at</label>
+                        <label class="sr-only" for="expiration_date">Expire at</label>
                         <input type="text" name="expiration_date" id="expiration_date" 
                         placeholder="Expiration date" onfocus="(this.type='date')"
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none focus:ring-2 
@@ -40,11 +40,21 @@
 
                 <div class="mb-4">
                     <div class="flex items-center">
-                        <label for="location" class="sr-only">Location</label>
-                        <input type="text" name="location" id="location" placeholder="Fridge's location" 
+                        <label for="location" class="sr-only">Product description</label>
+                        <input type="text" name="location" id="location" placeholder="Product's description" 
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
                         focus:ring-2 focus:ring-blue-600 focus:border-transparent">
                     </div>
+                </div>
+
+                <div class="mb-4">
+                    <select class="bg-gray-100 border-2 w-full p-4 rounded-lg invalid:text-blue-400 focus:outline-none 
+                    focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        <option disabled selected value class="invalid:text-blue-500"> -- select a storage location -- </option>
+                        <option>Wedding</option>
+                        <option>Birthday</option>
+                        <option>Other</option>
+                    </select>
                 </div>
 
                 <div class="mb-4">
@@ -58,23 +68,7 @@
                     </div>
                 </div>
 
-                <div class="block mb-3">
-                    <span>Door's position</span>
-                    <div class="mt-2 flex flex-row space-x-6">
-                        <div class="mr-2">
-                            <label class="inline-flex items-center">
-                                <input type="radio" checked name="side" class="text-blue-500" value="0" />
-                                <span class="ml-2">Left</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="side" class="text-blue-500" value="1" />
-                                <span class="ml-2">Right</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded

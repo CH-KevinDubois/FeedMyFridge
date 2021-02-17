@@ -28,8 +28,9 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request, $id)
     {
+        dd($id);
         return view('products.add', [
             'fridge' => Fridge::find($request->fridge_id),
         ]);
