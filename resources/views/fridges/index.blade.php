@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex justify-center">
-        <div class="w-3/4 bg-white p-6 rounded-lg">
+    <div class="flex flex-col justify-center m-auto w-3/4 bg-white p-6 rounded-lg">
+        <div class="mb-4">
             @if ($fridges->count())
                 <div class="flex flex-row flex-wrap justify-center items-center">
                     @foreach ($fridges as $fridge)
@@ -11,7 +11,7 @@
                             <div class="row-start-3 col-span-4 self-center">Number product inside</div>
                             <div class="p-3 row-start-4 col-span-4 flex flex-col place-self-end">
                                 <section class="flex content-start">
-                                    <form action="{{ route('products.create')}}" method="post" class="mr-2">
+                                    <form action="{{ route('products.create', $fridge->id)}}" method="post" class="mr-2">
                                         @method('get')
                                         @csrf
                                         <input type="hidden" id="fridge_id" name="fridge_id" value="{{ $fridge->id }}">
@@ -37,8 +37,13 @@
                     @endforeach
                 </div>
             @else
-                <span> There is no fridge</span>
+                <span> There is no fridge do display</span>
             @endif
+        </div>
+        <div>
+            <form action="{{ route('fridges.create') }}" method="get" class="mr-2">
+                <button type="submit" class="btn-blue">Create a new fridge</button>
+            </form>
         </div>
     </div> 
 @endsection
