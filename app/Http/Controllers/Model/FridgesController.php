@@ -40,4 +40,15 @@ class FridgesController extends Controller
 
         return back();
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Fridge $fridge)
+    {
+        return view('fridges.show', ['fridge' => $fridge]);
+    }
 }

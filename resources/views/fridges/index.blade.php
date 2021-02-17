@@ -17,9 +17,10 @@
                                         <input type="hidden" id="fridge_id" name="fridge_id" value="{{ $fridge->id }}">
                                         <button type="submit" class="text-blue-700">Add product</button>
                                     </form>
-                                    <form action="" method="post" class="mr-2">
+                                    <form action="{{ route('fridges.show', $fridge)}}" method="post" class="mr-2">
                                         @csrf
-                                        <button type="submit" class="text-blue-700">See product(s)</button>
+                                        @method('get')
+                                        <button type="submit" class="text-blue-700">show fridge</button>
                                     </form>
                                 </section>
                                 <section class="flex self-end">
