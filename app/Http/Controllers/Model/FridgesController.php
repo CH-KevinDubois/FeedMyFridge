@@ -38,13 +38,13 @@ class FridgesController extends Controller
 
         //auth()->user()->fridges()->create($request->only('brand', 'location', 'freezer', 'side'));
 
-        return back();
+        return redirect()->route('fridges.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Fridge $fridge
      * @return \Illuminate\Http\Response
      */
     public function show(Fridge $fridge)

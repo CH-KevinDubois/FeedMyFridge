@@ -15,4 +15,19 @@ class Fridge extends Model
         'freezer',
         'side',
     ];
+
+    /**
+     * Return the number of products.
+     *
+     * @return int
+     */
+    public function count_products()
+    {
+        return $this->products()->count();
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
