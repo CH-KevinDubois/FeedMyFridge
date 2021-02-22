@@ -12,7 +12,9 @@ module.exports = {
   },
   variants: {
     textColor: ({ after }) => after(['invalid']),
-    extend: {},
+    extend: {
+      transform: ['hover'],
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
