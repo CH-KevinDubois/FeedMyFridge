@@ -29,7 +29,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::resource('/fridges', FridgesController::class)->middleware('auth');
 
-Route::resource('fridges/{id}/products', ProductsController::class);
+Route::resource('fridges/{fridge}/products', ProductsController::class);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index']);
