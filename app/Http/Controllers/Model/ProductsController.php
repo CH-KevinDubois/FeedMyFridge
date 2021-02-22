@@ -4,6 +4,7 @@ namespace App\Http\Controllers\model;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fridge;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -28,11 +29,10 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, $id)
+    public function create(Request $request, Fridge $fridge)
     {
-        dd($id);
         return view('products.add', [
-            'fridge' => Fridge::find($request->fridge_id),
+            'fridge' => $fridge,
         ]);
     }
 
@@ -42,9 +42,23 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Fridge $fridge)
     {
-        //
+        //dd($fridge);
+        // $this->validate($request, [
+        //     'brand' => 'required|max:255',
+        //     'side' => 'required',
+        // ]);
+
+        $fridge->products()->create([
+            'expired_at' => $request->expired_at,
+            'name' => $request->name,
+            'location' => $request->location,
+            'quantity' => $request->quantity,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('fridges.show', $fridge);
     }
 
     /**
