@@ -39,15 +39,12 @@
                 </form>
                 <!-- edit/remove buttons -->
                 <div class="flex flex-row justify-between space-x-3">
-                    <form action="" method="post">
+                    <form action="{{ route('fridges.destroy', $fridge) }}" method="post">
                         @csrf
-                        <button type="submit" class="btn-blue">Edit</button>
+                        @method('delete')
+                        <button type="submit" class="btn-blue">Delete</button>
                     </form>
-                    <form action="" method="post">
-                        @csrf
-                        <button type="submit" class="btn-blue">Remove</button>
-                    </form>
-                    <form action="{{ url()->previous() }}" method="post">
+                    <form action="{{ route('fridges.index') }}" method="post">
                         @csrf
                         @method('get')
                         <button type="submit" class="btn-blue">Go back</button>

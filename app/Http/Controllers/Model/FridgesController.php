@@ -51,4 +51,17 @@ class FridgesController extends Controller
     {
         return view('fridges.show', ['fridge' => $fridge]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Fridge $fridge
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Fridge $fridge)
+    {
+        $fridge->delete();
+
+        return redirect()->route('fridges.index');
+    }
 }
