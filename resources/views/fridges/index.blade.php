@@ -6,41 +6,36 @@
             @if ($fridges->count())
                 <div class="flex flex-row flex-wrap justify-center items-center">
                     @foreach ($fridges as $fridge)
-                        <div class="m-2 w-64 h-64 bg-yellow-200 rounded-lg grid grid-rows-4 grid-cols-4">
-                            <div class="block row-start-1 row-span-2 col-span-4 place-self-center">{{ $fridge->brand }}</div>
-                            <div class="row-start-3 col-span-4 self-center">Number product inside</div>
-                            <div class="p-3 row-start-4 col-span-4 flex flex-col place-self-end">
-                                <section class="flex content-start">
-                                    <form action="{{ route('products.create', $fridge->id)}}" method="post" class="mr-2">
-                                        @method('get')
-                                        @csrf
-                                        <input type="hidden" id="fridge_id" name="fridge_id" value="{{ $fridge->id }}">
-                                        <button type="submit" class="text-blue-700">Add product</button>
-                                    </form>
-                                    <form action="{{ route('fridges.show', $fridge)}}" method="post" class="mr-2">
-                                        @csrf
-                                        @method('get')
-                                        <button type="submit" class="text-blue-700">show fridge</button>
-                                    </form>
-                                </section>
-                                <section class="flex self-end">
-                                    <form action="" method="post" class="mr-2">
-                                        @csrf
-                                        <button type="submit" class="text-blue-700">Edit</button>
-                                    </form>
-                                    <form action="" method="post" class="mr-2">
-                                        @csrf
-                                        <button type="submit" class="text-blue-700">Delete</button>
-                                    </form>
-                                </section>
+                    <div class="pb-6 mr-7">
+                        <div class="w-64">
+                            <!-- yellow background -->
+                            <div class="bg-gray-300 text-gray-50 rounded-xl p-8 space-y-5">
+                            <!-- blue line -->
+                                <div class="h-2 w-20 bg-blue-500"></div>
+                                <!-- completion -->
+                                <div class="text-xl font-extrabold text-white">0%</div>
+                                <!-- description -->
+                                <p class="leading-snug text-gray-800 text-xl">{{ $fridge->brand }} - {{ $fridge->location }}</p>
+                                <!-- show fridge -->
+                                <form action="{{ route('fridges.show', $fridge)}}" method="post" class="flex items-center">
+                                    @csrf
+                                    @method('get')
+                                    <button type="submit" class="text-blue-500 font-bold tracking-wide focus:ring-none">Show fridge</button>
+                                    <svg class="w-4 h-4 ml-2 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </form>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             @else
-                <span> There is no fridge do display</span>
+                <span> There is no fridge to display</span>
             @endif
         </div>
+
+        <!-- create fridge -->
         <div>
             <form action="{{ route('fridges.create') }}" method="get" class="mr-2">
                 <button type="submit" class="btn-blue">Create a new fridge</button>
