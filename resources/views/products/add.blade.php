@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-1/3 bg-white p-6 rounded-lg">
-            <form action="{{ route('products.store')}}" method="POST">
+            <form action="{{ route('products.store', $fridge) }}" method="POST">
                 @csrf
                 <input type="hidden" name="fridge_id" value=" {{$fridge->fridge_id }}">
 
@@ -24,14 +24,14 @@
 
                 <div class="mb-4">
                     <div class="flex flex-col items-start align-middle">
-                        <label class="sr-only" for="expiration_date">Expire at</label>
-                        <input type="text" name="expiration_date" id="expiration_date" 
+                        <label class="sr-only" for="expired_at">Expire at</label>
+                        <input type="text" name="expired_at" id="expired_at" 
                         placeholder="Expiration date" onfocus="(this.type='date')"
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none focus:ring-2 
                         focus:ring-blue-600 focus:border-transparent @error('brand')
                         ring-2 ring-red-500 border-transparent @enderror"></div>
 
-                    @error('expiration_date')
+                    @error('expired_at')
                         <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
                         </div>
@@ -40,35 +40,37 @@
 
                 <div class="mb-4">
                     <div class="flex items-center">
-                        <label for="location" class="sr-only">Product description</label>
-                        <input type="text" name="location" id="location" placeholder="Product's description" 
+                        <label for="description" class="sr-only">Product description</label>
+                        <input type="text" name="description" id="description" placeholder="Product's description" 
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
                         focus:ring-2 focus:ring-blue-600 focus:border-transparent">
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <select class="bg-gray-100 border-2 w-full p-4 rounded-lg invalid:text-blue-400 focus:outline-none 
-                    focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                        <option disabled selected value class="invalid:text-blue-500"> -- select a storage location -- </option>
-                        <option>Wedding</option>
-                        <option>Birthday</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-
-                <div class="mb-4">
-                    <div class="p-1">
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" name="freezer" class="rounded border-gray-300 
-                            text-blue-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 
-                            focus:ring-opacity-50" checked>
-                            <span class="ml-2">has a freezer</span>
-                        </label>
+                    <div class="flex items-center">
+                        <label for="quantity" class="sr-only">Product description</label>
+                        <input type="text" name="quantity" id="quantity" placeholder="Quantity" 
+                        class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
+                        focus:ring-2 focus:ring-blue-600 focus:border-transparent">
                     </div>
                 </div>
 
-                
+                <div class="mb-4">
+                    <select name="location" class="bg-gray-100 border-2 w-full p-4 rounded-lg invalid:text-blue-400 focus:outline-none 
+                    focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        <option disabled selected value class="invalid:text-blue-500"> -- select a storage location -- </option>
+                        @for ($i = 0; $i < $fridge->number_racks_bulk; $i++)
+                            <option>Rack - {{ $i }}</option>
+                        @endfor
+                        @for ($i = 0; $i < $fridge->number_racks_bulk; $i++)
+                            <option>Door rack - {{ $i }}</option>
+                        @endfor
+                        @if ($fridge->freezer)
+                            <option>Freezer</option>
+                        @endif
+                    </select>
+                </div>
 
                 <div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded
