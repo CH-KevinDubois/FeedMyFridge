@@ -19,9 +19,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Fridge $fridge)
     {
-        //
+        return view('products.index', [
+            'fridge' => $fridge,
+        ]);
     }
 
     /**
