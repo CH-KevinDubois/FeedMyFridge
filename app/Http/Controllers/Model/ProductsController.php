@@ -52,15 +52,17 @@ class ProductsController extends Controller
         //     'side' => 'required',
         // ]);
 
-        $fridge->products()->create([
-            'expired_at' => $request->expired_at,
-            'name' => $request->name,
-            'location' => $request->location,
-            'quantity' => $request->quantity,
-            'description' => $request->description,
-        ]);
+        for ($i=0; $i < $request->quantity; $i++) { 
+            $fridge->products()->create([
+                'expired_at' => $request->expired_at,
+                'name' => $request->name,
+                'location' => $request->location,
+                'description' => $request->description,
+            ]);
+        }
+        
 
-        return redirect()->route('fridges.show', $fridge);
+        return redirect()->route('fridges.index');
     }
 
     /**
@@ -103,8 +105,10 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Fridge $fridge, Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index', $fridge);
     }
 }
