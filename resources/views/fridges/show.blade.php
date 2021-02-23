@@ -23,50 +23,27 @@
                 <p class="leading-snug text-gray-800 text-xl">Freezer</p>
                 @endif
                 <!-- add product -->
-                <form action="{{ route('products.create', $fridge) }}" method="post" class="flex items-center">
+                <form action="{{ route('fridges.destroy', $fridge) }}" method="post" class="flex items-center">
                     @csrf
-                    @method('get')
-                    <button type="submit" class="border p-2 flex items-center justify-center bg-blue-500 rounded-lg
-                    focus:outline-none hover:bg-blue-600">
+                    @method('delete')
+                    <button type="submit" class="border border-red-500 p-2 flex items-center justify-center bg-red-500 rounded-lg
+                            focus:outline-none hover:bg-red-600">
                         <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
                     </button>
                 </form>
                 <!-- see products -->
-                <form action="{{ route('products.index', $fridge) }}" method="post" class="flex items-center">
+                <form action="{{ route('fridges.index') }}" method="post" class="flex items-center">
                     @csrf
                     @method('get')
-                    <button type="submit" class="border p-2 flex items-center justify-center bg-blue-500 rounded-lg
-                    focus:outline-none hover:bg-blue-600">
+                    <button type="submit" class="border border-blue-500 p-2 flex items-center justify-center bg-blue-500 rounded-lg
+                            focus:outline-none hover:bg-blue-600">
                         <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z" />
                         </svg>
                     </button>
                 </form>
-
-                <!-- see product -->
-                <form action="{{ route('products.create', $fridge) }}" method="post" class="flex items-center">
-                    @csrf
-                    @method('get')
-                    <button type="submit" class="text-blue-500 font-bold tracking-wide focus:ring-none">See product(s)</button>
-                    <svg class="w-4 h-4 ml-2 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </form>
-                <!-- edit/remove buttons -->
-                <div class="flex flex-row justify-between space-x-3">
-                    <form action="{{ route('fridges.destroy', $fridge) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn-blue w-24">Delete</button>
-                    </form>
-                    <form action="{{ route('fridges.index') }}" method="post">
-                        @csrf
-                        @method('get')
-                        <button type="submit" class="btn-blue w-24">Go back</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
