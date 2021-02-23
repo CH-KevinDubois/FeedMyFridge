@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->timestamps();
             $table->foreignId('fridge_id')->constrained()->onDelete('cascade');
             $table->date('expired_at');
-            $table->integer('quantity');
             $table->string('name');
             $table->string('description');
         });
