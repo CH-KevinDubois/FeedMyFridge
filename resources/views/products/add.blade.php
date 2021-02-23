@@ -9,8 +9,8 @@
 
                 <div class="mb-4">
                     <div class="flex items-center">
-                        <label for="name" class="sr-only">Product name</label>
-                        <input type="text" name="name" id="name" placeholder="Product name" class="bg-gray-100 
+                        <label for="name" class="sr-only">Product</label>
+                        <input type="text" name="name" id="name" placeholder="Product" class="bg-gray-100 
                         border-2 w-full p-4 rounded-lg focus:outline-none focus:ring-2 
                         focus:ring-blue-600 focus:border-transparent @error('name')
                         ring-2 ring-red-500 border-transparent @enderror"></div>
@@ -40,8 +40,8 @@
 
                 <div class="mb-4">
                     <div class="flex items-center">
-                        <label for="description" class="sr-only">Product description</label>
-                        <input type="text" name="description" id="description" placeholder="Product's description" 
+                        <label for="description" class="sr-only">Additional description</label>
+                        <input type="text" name="description" id="description" placeholder="Additional description" 
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
                         focus:ring-2 focus:ring-blue-600 focus:border-transparent">
                     </div>
@@ -49,7 +49,7 @@
 
                 <div class="mb-4">
                     <div class="flex items-center">
-                        <label for="quantity" class="sr-only">Product description</label>
+                        <label for="quantity" class="sr-only">Quantity</label>
                         <input type="text" name="quantity" id="quantity" placeholder="Quantity" 
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
                         focus:ring-2 focus:ring-blue-600 focus:border-transparent">
@@ -60,11 +60,15 @@
                     <select name="location" class="bg-gray-100 border-2 w-full p-4 rounded-lg invalid:text-blue-400 focus:outline-none 
                     focus:ring-2 focus:ring-blue-600 focus:border-transparent">
                         <option disabled selected value class="invalid:text-blue-500"> -- select a storage location -- </option>
-                        @for ($i = 0; $i < $fridge->number_racks_bulk; $i++)
-                            <option>Rack - {{ $i }}</option>
+                        @for ($i = 1; $i <= $fridge->number_racks_bulk; $i++)
+                            <option>Rack level {{ $i }}</option>
                         @endfor
-                        @for ($i = 0; $i < $fridge->number_racks_bulk; $i++)
-                            <option>Door rack - {{ $i }}</option>
+                        @for ($i = 1; $i <= $fridge->number_racks_door; $i++)
+                            @if ($fridge->side)
+                                <option>Right door rack level {{ $i }}</option>
+                            @else
+                                <option>Left door rack level {{ $i }}</option>
+                            @endif
                         @endfor
                         @if ($fridge->freezer)
                             <option>Freezer</option>
