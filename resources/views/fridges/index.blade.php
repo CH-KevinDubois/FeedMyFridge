@@ -74,6 +74,12 @@
             <form action="{{ route('fridges.create') }}" method="get" class="mr-2">
                 <button type="submit" class="btn-blue">New fridge</button>
             </form>
+            <form action="{{ route('fridges.allproducts') }}" method="get" class="mr-2">
+                <button type="submit" class="btn-blue">All products</button>
+            </form>
+            <form action="{{ route('fridges.create') }}" method="get" class="mr-2">
+                <button type="submit" class="btn-blue">Search product</button>
+            </form>
             <form action="{{ route('home') }}" method="get">
                 <button type="submit" class="btn-blue">Go back</button>
             </form>

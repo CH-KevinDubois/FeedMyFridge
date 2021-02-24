@@ -27,6 +27,8 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
+Route::get('/fridges/allproducts{search?}', [FridgesController::class, 'allproducts'])->middleware('auth')->name('fridges.allproducts');
+Route::get('/fridges/searchproduct', [FridgesController::class, 'searchproduct'])->middleware('auth')->name('fridges.searchproduct');
 Route::resource('/fridges', FridgesController::class)->middleware('auth');
 
 Route::resource('fridges/{fridge}/products', ProductsController::class);
