@@ -2,17 +2,22 @@
 
 @section('content')
     <div class="flex flex-col m-auto w-3/4 h-full bg-white p-6 rounded-lg">
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 col-span-1 gap-6 mx-6 bg-white">
-            <form action="{{ route('fridges.allproducts') }}" method="get" class="mr-2 flex flex-row">
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mx-6 bg-white">
+            <form action="{{ route('fridges.searchproduct') }}" method="get" class="col-span-1 mr-2 flex flex-row">
                 <input
                 type="text" name="search" 
-                placeholder="Search ..."
+                placeholder="Search product..."
                 class="px-6 py-2 border border-gray-300 placeholder-gray-500 rounded-r-none
                 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-50"/>
                 <button type="submit" class="btn-blue rounded-l-none">
                     <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="absolute left-3 bottom-3 h-4 w-4 text-gray-500">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
+                </button>
+            </form>
+            <form action="{{ route('fridges.searchproduct') }}" method="get" class="col-span-1 col-start-3 mr-2 flex flex-row">
+                <button class="btn-blue">
+                    Go back
                 </button>
             </form>
         </div>

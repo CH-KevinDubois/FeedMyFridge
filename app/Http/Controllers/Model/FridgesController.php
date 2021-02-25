@@ -9,6 +9,11 @@ use PhpParser\Node\Expr\Cast;
 
 class FridgesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+    
     public function index()
     {  
         return view('fridges.index', [
@@ -21,11 +26,14 @@ class FridgesController extends Controller
         return view('fridges.create');
     }
 
-    public function allproducts(Request $request)
+    /**
+     * Display a list of products of owned fridges.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchProduct(Request $request)
     {
-        
-        
-
         $fridges = auth()->user()->fridges;
         $products = collect();
 
@@ -44,7 +52,7 @@ class FridgesController extends Controller
         }   
         
         $products = $products->sortBy('expired_at');
-        return view('fridges.allproducts', ['products' => $products]);
+        return view('fridges.search', ['products' => $products]);
     }
 
     public function store(Request $request)
