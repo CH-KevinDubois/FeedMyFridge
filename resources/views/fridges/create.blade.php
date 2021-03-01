@@ -59,10 +59,17 @@
                     </div>
                 </div>
 
-                <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded
-                    font-medium w-full hover:bg-blue-700 focus:outline-none focus:ring-2 
-                    focus:ring-blue-600 focus:ring-opacity-50 ">Create</button>
+                <div class="flex flex-row w-full space-x-2">
+                    <div>
+                        <button type="submit" class="btn-blue px-6">Create</button>
+                    </div>
+                    <div>
+                        <form action="{{ route('fridges.index') }}" method="post">
+                            @csrf
+                            @method('get')
+                            <button type="submit" class="btn-blue px-6">Cancel</button>
+                        </form>
+                    </div>
                 </div>
             </form>
 
