@@ -8,21 +8,21 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-200">
-    <nav class="p-6 bg-white flex justify-between mb-6 text-lg">
+    <nav class="p-6 bg-white flex justify-between mb-6 text-lg shadow-md">
         <ul class="flex items-center">
             <li>
-                <a href="" class="p-3">Home</a>
+                <a href=" {{ route('home') }} " class="p-3">Home</a>
             </li>
             @auth
             <li>
-                <a href="{{ route('fridges.index') }}" class="p-3">Fridges</a>
+                <a href="{{ route('fridges.index') }}" class="p-3">My fridges</a>
             </li>  
             @endauth
         </ul>
         <ul class="flex items-center">
             @auth
             <li>
-                <a href="" class="p-3">{{ auth()->user()->name }}</a>
+                <p class="p-2 pr-6">{{ auth()->user()->name }}</p>
             </li>
             <li>
                 <form action="{{ route('logout') }}" method="post">
