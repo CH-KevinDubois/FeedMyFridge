@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex flex-col justify-center m-auto w-3/5 bg-white p-6 rounded-lg">
+    <div class="flex flex-col justify-center m-auto w-3/5 bg-white p-10 rounded-lg">
         <div class="mb-4">
             @if ($fridges->count())
                 <div class="flex flex-row flex-wrap justify-center items-center">
@@ -71,14 +71,22 @@
 
         <!-- create fridge -->
         <div class="w-full flex flex-row flex-1">
-            <form action="{{ route('fridges.create') }}" method="get" class="mr-2">
+            <form action="{{ route('fridges.create') }}" method="post" class="mr-2">
+                @csrf
+                @method('get')
                 <button type="submit" class="btn-blue">New fridge</button>
             </form>
-            <form action="{{ route('fridges.searchproduct') }}" method="get" class="mr-2">
+            @if ($fridges->count()>0)
+            <form action="{{ route('fridges.searchproduct') }}" method="post" class="mr-2">
+                @csrf
+                @method('get')
                 <button type="submit" class="btn-blue">Search product</button>
             </form>
-            <form action="{{ route('home') }}" method="get">
-                <button type="submit" class="btn-blue">Go back</button>
+            @endif
+            <form action="{{ route('home') }}" method="post">
+                @csrf
+                @method('get')
+                <button type="submit" class="btn-blue">Go home</button>
             </form>
         </div>
     </div> 
