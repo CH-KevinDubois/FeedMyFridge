@@ -14,6 +14,8 @@ class Fridge extends Model
         'location',
         'freezer',
         'side',
+        'number_racks_bulk',
+        'max_capacity',
     ];
 
     /**

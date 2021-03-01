@@ -22,26 +22,30 @@
                 @if ($fridge->freezer)
                 <p class="leading-snug text-gray-800 text-xl">Freezer</p>
                 @endif
-                <!-- add product -->
-                <form action="{{ route('fridges.destroy', $fridge) }}" method="post" class="flex items-center">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="border border-red-500 p-2 flex items-center justify-center bg-red-500 rounded-lg
-                            focus:outline-none hover:bg-red-600">
-                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </button>
-                </form>
-                <!-- see products -->
+                <div class="flex flex-row space-x-3">
+                    <!-- delete fridge -->
+                    <form action="{{ route('fridges.destroy', $fridge) }}" method="post" class="flex items-center">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="border border-red-500 p-2 flex items-center justify-center bg-red-500 rounded-lg
+                                focus:outline-none hover:bg-red-600">
+                            <svg class="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </form>
+                    <!-- update fridge -->
+                    <form action="{{ route('fridges.edit', $fridge) }}" method="post" class="flex items-center">
+                        @csrf
+                        @method('get')
+                        <button type="submit" class="btn-blue">Edit</button>
+                    </form>
+                </div>
+                <!-- update fridge -->
                 <form action="{{ route('fridges.index') }}" method="post" class="flex items-center">
                     @csrf
-                    @method('get')
-                    <button type="submit" class="border border-blue-500 p-2 flex items-center justify-center bg-blue-500 rounded-lg
-                            focus:outline-none hover:bg-blue-600">
-                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z" />
-                        </svg>
+                        @method('get')
+                        <button type="submit" class="btn-blue">Go back</button>
                     </button>
                 </form>
             </div>

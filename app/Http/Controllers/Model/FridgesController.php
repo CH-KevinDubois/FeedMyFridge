@@ -60,19 +60,57 @@ class FridgesController extends Controller
         $this->validate($request, [
             'brand' => 'required|max:255',
             'side' => 'required',
+            'location' => 'required',
+            'shelf' => 'required|numeric|min:1|max:10',
+            'max_capacity' => 'numeric|min:50|max:150',
         ]);
-
 
         auth()->user()->fridges()->create([
             'brand' => $request->brand,
             'location' => $request->location,
             'freezer' => $request->freezer==='on'?true:false,
             'side' => $request->side,
+            'number_racks_bulk' => $request->shelf,
+            'max_capacity' => $request->max_capacity,
         ]);
 
         //auth()->user()->fridges()->create($request->only('brand', 'location', 'freezer', 'side'));
 
         return redirect()->route('fridges.index');
+    }
+
+    public function update(Request $request, Fridge $fridge)
+    {
+        $this->validate($request, [
+            'brand' => 'required|max:255',
+            'side' => 'required',
+            'location' => 'required',
+            'shelf' => 'required|numeric|min:1|max:10',
+            'max_capacity' => 'numeric|min:50|max:150',
+        ]);
+
+
+        $fridge->update([
+            'brand' => $request->brand,
+            'location' => $request->location,
+            'freezer' => $request->freezer==='on'?true:false,
+            'side' => $request->side,
+            'number_racks_bulk' => $request->shelf,
+            'max_capacity' => $request->max_capacity,
+        ]);
+
+        return redirect()->route('fridges.show', $request->fridge);
+    }
+
+    /**
+     * Edit the specified resource.
+     *
+     * @param  Fridge $fridge
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Fridge $fridge)
+    {
+        return view('fridges.edit', ['fridge' => $fridge]);
     }
 
     /**
