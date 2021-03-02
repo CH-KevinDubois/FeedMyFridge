@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex flex-col m-auto w-3/4 bg-white p-6 rounded-lg">
-        <a href="{{ route('fridges.index') }}" class="btn-blue w-32 mr-6 self-end">Go back</a>
+        <a href="{{ route('fridges.index') }}" class="btn-blue w-32 mr-6 self-end text-center">Go back</a>
         <div class="shadow overflow-hidden border border-blue-200 rounded-lg m-6">
             @if ($fridge->count_products())
                 <table class="w-full divide-y divide-blue-200">
@@ -21,7 +21,7 @@
                             @php
                                 $expiration_date = Carbon\Carbon::parse($product->expired_at);
                             @endphp
-                            <td class="px-2 py-4 text-base whitespace-nowrap @if($expiration_date->isPast()) text-red-500 @endif">{{$expiration_date->format('d m Y')}}</td>
+                            <td class="px-2 py-4 text-base whitespace-nowrap @if($expiration_date->isPast()) text-red-500 font-extrabold @endif">{{$expiration_date->format('d m Y')}}</td>
                             <td class="px-2 py-4 text-base whitespace-nowrap">{{ $product->location}}</td>
                             <td class="px-2 py-4 text-base whitespace-nowrap">
                                 <div class="flex flex-row space-x-2">
