@@ -50,10 +50,16 @@
                 <div class="mb-4">
                     <div class="flex items-center">
                         <label for="quantity" class="sr-only">Quantity</label>
-                        <input type="text" name="quantity" id="quantity" placeholder="Quantity" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
+                        <input type="number" name="quantity" id="quantity" placeholder="Quantity" 
+                        min="1" max="50" class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
                         focus:ring-2 focus:ring-blue-600 focus:border-transparent">
                     </div>
+
+                    @error('quantity')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
@@ -74,10 +80,9 @@
                     </select>
                 </div>
 
-                <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded
-                    font-medium w-full hover:bg-blue-700 focus:outline-none focus:ring-2 
-                    focus:ring-blue-600 focus:ring-opacity-50 ">Create</button>
+                <div class="flex flex-row space-x-2">
+                    <button type="submit" class="btn-blue">Create</button>
+                    <a href="{{ route('fridges.index') }}" class="btn-blue text-center">Cancel</a>
                 </div>
             </form>
 
