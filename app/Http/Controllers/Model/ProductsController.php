@@ -51,7 +51,7 @@ class ProductsController extends Controller
             'name' => 'required|max:255',
             'expired_at' => 'required|date',
             'location' => 'required',
-            'quantity' => 'numeric|min:1|max:50',
+            'quantity' => 'required|numeric|min:1|max:50',
         ]);
 
         for ($i=0; $i < $request->quantity; $i++) { 
