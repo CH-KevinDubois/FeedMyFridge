@@ -47,10 +47,12 @@ class ProductsController extends Controller
     public function store(Request $request, Fridge $fridge)
     {
         //dd($fridge);
-        // $this->validate($request, [
-        //     'brand' => 'required|max:255',
-        //     'side' => 'required',
-        // ]);
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'expired_at' => 'required|date',
+            'location' => 'required',
+            'quantity' => 'numeric|min:1|max:50',
+        ]);
 
         for ($i=0; $i < $request->quantity; $i++) { 
             $fridge->products()->create([
@@ -82,9 +84,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Fridge $fridge, Product $product)
     {
-        //
+        return view('products.edit', 
+        [   'fridge' => $fridge, 
+            'product' => $product]);
     }
 
     /**
@@ -94,9 +98,22 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Fridge $fridge, Product $product)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'expired_at' => 'required|date',
+            'location' => 'required',
+        ]);
+
+        $product->update([
+            'expired_at' => $request->expired_at,
+            'name' => $request->name,
+            'location' => $request->location,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('products.index', $fridge);
     }
 
     /**
