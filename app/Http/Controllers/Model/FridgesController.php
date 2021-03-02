@@ -132,6 +132,8 @@ class FridgesController extends Controller
      */
     public function destroy(Fridge $fridge)
     {
+        $this->authorize('delete', $fridge);
+        
         $fridge->delete();
 
         return redirect()->route('fridges.index');
