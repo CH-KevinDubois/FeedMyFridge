@@ -65,8 +65,9 @@
                     </select>
                 </div>
 
-                <div>
-                    <button type="submit" class="btn-blue">Update</button>
+                <div class="flex flex-row space-x-2">
+                    <button type="submit" class="btn-blue bg-blue-800 hover:bg-blue-900">Update</button>
+                    <a href="{{ route('products.index', $fridge) }}" class="btn-blue text-center">Cancel</a>
                 </div>
             </form>
 
