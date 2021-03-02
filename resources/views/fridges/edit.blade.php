@@ -47,13 +47,13 @@
                     <div class="mt-2 flex flex-row space-x-6">
                         <div class="mr-2">
                             <label class="inline-flex items-center">
-                                <input type="radio" name="side" class="text-blue-500" value="0" @if ($fridge->side) checked @endif/>
+                                <input type="radio" name="side" class="text-blue-500" value="0" @if (!$fridge->side) checked @endif/>
                                 <span class="ml-2">Left</span>
                             </label>
                         </div>
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="radio" name="side" class="text-blue-500" value="1" @if (!$fridge->side) checked @endif/>
+                                <input type="radio" name="side" class="text-blue-500" value="1" @if ($fridge->side) checked @endif/>
                                 <span class="ml-2">Right</span>
                             </label>
                         </div>

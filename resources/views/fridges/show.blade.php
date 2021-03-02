@@ -11,13 +11,13 @@
                     $count = $fridge->count_products();
                 @endphp
                 <!-- completion -->
-                <div class="text-2xl font-extrabold text-gray-800">{{ ($count/$fridge->max_capacity)*100 }}% - ({{ $count }} {{ Str::plural('product', $count) }})</div>
+                <div class="text-2xl font-extrabold text-gray-800">{{ round($count/$fridge->max_capacity,3)*100 }}% - ({{ $count }} {{ Str::plural('product', $count) }})</div>
                 <!-- description -->
                 <p class="leading-snug text-gray-800 text-xl">{{ $fridge->brand }} - {{ $fridge->location }}</p>
                 <!-- racks in bulk -->
-                <p class="leading-snug text-gray-800 text-xl">Main racks : {{ $fridge->number_racks_bulk }}</p>
-                <!-- racks in door -->
-                <p class="leading-snug text-gray-800 text-xl">Door racks : {{ $fridge->number_racks_door }}</p>
+                <p class="leading-snug text-gray-800 text-xl">Self : {{ $fridge->number_racks_bulk }}</p>
+                <!-- Door side -->
+                <p class="leading-snug text-gray-800 text-xl">{{ $fridge->side?"Right":"Left" }} door</p>
                 <!-- freezer -->
                 @if ($fridge->freezer)
                 <p class="leading-snug text-gray-800 text-xl">Freezer</p>
