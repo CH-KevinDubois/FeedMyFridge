@@ -24,7 +24,7 @@
                                     </svg>
                                     <p class="leading-snug text-gray-800 text-xl">{{ $fridge->location }}</p>
                                 </div>
-                                <div class="flex flex-col w-10/12 space-y-2">
+                                <div class="flex flex-col justify-center w-full space-y-2">
                                     <!-- add product -->
                                     <form action="{{ route('products.create', $fridge) }}" method="post">
                                         @csrf
@@ -70,7 +70,7 @@
         </div>
 
         <!-- create fridge -->
-        <div class="w-full flex flex-row flex-1">
+        <div class="w-full flex flex-row justify-center">
             <form action="{{ route('fridges.create') }}" method="post" class="mr-2">
                 @csrf
                 @method('get')
