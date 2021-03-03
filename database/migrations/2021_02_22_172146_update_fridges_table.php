@@ -15,7 +15,6 @@ class UpdateFridgesTable extends Migration
     {
         Schema::table('fridges', function ($table)  {
             $table->integer('number_racks_bulk')->default(4);
-            $table->integer('number_racks_door')->default(4);
             $table->integer('max_capacity')->default(50);
         });
     }
@@ -29,7 +28,6 @@ class UpdateFridgesTable extends Migration
     {
         Schema::table('fridges', function ($table) {
             $table->dropColumn('number_racks_bulk');
-            $table->dropColumn('number_racks_door');
             $table->dropColumn('max_capacity');
         });
     }
