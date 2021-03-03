@@ -9,7 +9,8 @@
                 <div class="mb-4">
                     <div class="flex items-center">
                         <label for="brand" class="sr-only">Brand</label>
-                        <input type="text" name="brand" id="brand" placeholder="Fridge's brand/name/model" class="bg-gray-100 
+                        <input type="text" name="brand" id="brand" placeholder="Fridge's brand/name/model" 
+                        value="{{ old('brand') }}" class="bg-gray-100 
                         border-2 w-full p-4 rounded-lg focus:outline-none focus:ring-2 
                         focus:ring-blue-600 focus:border-transparent @error('brand')
                         ring-2 ring-red-500 border-transparent @enderror"></div>
@@ -25,9 +26,16 @@
                     <div class="flex items-center">
                         <label for="location" class="sr-only">Location</label>
                         <input type="text" name="location" id="location" placeholder="Fridge's location" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
-                        focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        value="{{ old('location') }}" class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
+                        focus:ring-2 focus:ring-blue-600 focus:border-transparent @error('location')
+                        ring-2 ring-red-500 border-transparent @enderror">
                     </div>
+
+                    @error('location')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
@@ -63,7 +71,7 @@
                     <div class="flex items-center">
                         <label for="shelf" class="sr-only">Shelf number</label>
                         <input type="text" name="shelf" id="shelf" placeholder="Number of shelves" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
+                        value="{{ old('shelf') }}" class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
                         focus:ring-2 focus:ring-blue-600 focus:border-transparent @error('shelf')
                         ring-2 ring-red-500 border-transparent @enderror"></div>
 
@@ -78,11 +86,11 @@
                     <div class="flex items-center">
                         <label for="max_capacity" class="sr-only">Maximum capacity</label>
                         <input type="text" name="max_capacity" id="max_capacity" placeholder="Maximum capacity (products)" 
-                        class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
-                        focus:ring-2 focus:ring-blue-600 focus:border-transparent @error('shelf')
+                        value="{{ old('max_capacity') }}" class="bg-gray-100 border-2 w-full p-4 rounded-lg focus:outline-none 
+                        focus:ring-2 focus:ring-blue-600 focus:border-transparent @error('max_capacity')
                         ring-2 ring-red-500 border-transparent @enderror"></div>
 
-                    @error('shelf')
+                    @error('max_capacity')
                         <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
                         </div>
